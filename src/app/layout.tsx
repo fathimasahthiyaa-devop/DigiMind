@@ -15,45 +15,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "InsightAI | Enterprise AI Social Listening & Market Intelligence",
+  title: "Digi Mind | Premium Digital Subscriptions & Account Upgrades",
   description:
-    "Transform business data into AI-powered decisions. Monitor brand conversations, understand customer sentiment, track competitors, and predict market trends in real-time.",
+    "Digi Mind facilitates the enhancement of your personal accounts to Premium or Pro versions through exclusive coupon codes, official voucher links, and invitations. Save up to 90% on LinkedIn Premium, Coursera Plus, Canva Pro, GitHub Student Pack, AutoDesk, ChatGPT Plus, and 40+ platforms with full warranty.",
   keywords: [
-    "AI social listening",
-    "market intelligence platform",
-    "brand monitoring software",
-    "customer sentiment analysis",
-    "competitor benchmarking",
-    "predictive market analytics",
-    "enterprise AI SaaS",
+    "Digi Mind",
+    "digimind.top",
+    "LinkedIn Premium discount",
+    "Coursera Plus cheap",
+    "Canva Pro lifetime",
+    "GitHub student developer pack",
+    "ChatGPT Plus subscription",
+    "AutoDesk student license",
+    "digital software subscription store",
+    "Sri Lanka digital subscriptions",
   ],
-  authors: [{ name: "InsightAI Technologies Inc." }],
-  creator: "InsightAI",
-  metadataBase: new URL("https://insightai-intelligence.vercel.app"),
+  authors: [{ name: "Digi Mind Store" }],
+  creator: "Digi Mind",
+  metadataBase: new URL("https://digimind.top"),
   openGraph: {
-    title: "InsightAI | Enterprise AI Social Listening & Market Intelligence",
+    title: "Digi Mind | Premium Digital Subscriptions & Account Upgrades",
     description:
-      "Transform business data into AI-powered decisions. Advanced social listening, sentiment tracking, and competitor intelligence.",
-    url: "https://insightai-intelligence.vercel.app",
-    siteName: "InsightAI",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "InsightAI Enterprise Dashboard Preview",
-      },
-    ],
+      "Upgrade your accounts to LinkedIn Premium, Coursera Plus, Canva Pro, GitHub Student Pack, and 40+ platforms with official voucher links, instant delivery, and full replacement warranty.",
+    url: "https://digimind.top",
+    siteName: "Digi Mind",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "InsightAI | Enterprise AI Social Listening & Market Intelligence",
+    title: "Digi Mind | Premium Digital Subscriptions & Account Upgrades",
     description:
-      "Real-time brand monitoring, sentiment analysis, and competitor intelligence powered by state-of-the-art AI.",
-    images: ["/og-image.png"],
-    creator: "@insightai",
+      "Upgrade your personal accounts to Premium or Pro versions with official invites, instant delivery, and warranty.",
   },
   robots: {
     index: true,
