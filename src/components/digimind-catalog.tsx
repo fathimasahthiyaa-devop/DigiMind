@@ -19,6 +19,7 @@ import {
 import { PRODUCTS, Product } from "@/data/products";
 import { useCurrency } from "@/context/currency-context";
 import { generateWhatsAppOrderUrl } from "@/lib/whatsapp";
+import { getProductLogo } from "@/components/brand-logos";
 
 export function DigiMindCatalog() {
   const { formatPrice, currency } = useCurrency();
@@ -62,7 +63,7 @@ export function DigiMindCatalog() {
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-slate-300">
-            The activation method is unique for each product. Enjoy reliable service with full replacement warranty.
+            Official licenses, voucher codes & invitations with full warranty. Click any product to inspect details or order instantly.
           </p>
         </div>
 
@@ -92,13 +93,13 @@ export function DigiMindCatalog() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search products (e.g. LinkedIn)..."
+              placeholder="Search products (e.g. YouTube, GitHub)..."
               className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900/90 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-all"
             />
           </div>
         </div>
 
-        {/* PRODUCT CARDS GRID */}
+        {/* PRODUCT CARDS GRID WITH OFFICIAL BRAND LOGOS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProducts.map((product) => {
             const currentPrice = formatPrice(product.priceUSD, product.priceLKR);
@@ -116,7 +117,7 @@ export function DigiMindCatalog() {
             return (
               <div
                 key={product.id}
-                className="group relative rounded-3xl glass-card border border-white/10 hover:border-cyan-500/40 p-6 flex flex-col justify-between transition-all duration-300 shadow-xl overflow-hidden hover:shadow-cyan-500/10 hover:-translate-y-1 bg-[#08102d]/90"
+                className="group relative rounded-3xl glass-card border border-white/10 hover:border-cyan-500/40 p-6 flex flex-col justify-between transition-all duration-300 shadow-xl overflow-hidden hover:shadow-cyan-500/10 hover:-translate-y-1.5 bg-[#08102d]/90"
               >
                 <div>
                   {/* Top Badge Row */}
@@ -130,10 +131,20 @@ export function DigiMindCatalog() {
                     </span>
                   </div>
 
-                  {/* Title & Tagline */}
-                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                    {product.name}
-                  </h3>
+                  {/* Header: Official Logo + Title */}
+                  <div className="flex items-start gap-3.5 mb-3">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 p-2 flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 group-hover:border-cyan-500/40 transition-transform">
+                      {getProductLogo(product.id, "w-8 h-8")}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-tight">
+                        {product.name}
+                      </h3>
+                      <span className="text-[11px] font-medium text-cyan-400">
+                        {product.categoryName}
+                      </span>
+                    </div>
+                  </div>
 
                   <p className="text-xs text-slate-300 mt-1 mb-4 leading-relaxed font-normal">
                     {product.tagline}
@@ -217,7 +228,7 @@ export function DigiMindCatalog() {
           })}
         </div>
 
-        {/* PRODUCT DETAIL MODAL */}
+        {/* PRODUCT DETAIL MODAL WITH BRAND LOGO */}
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div
@@ -232,18 +243,25 @@ export function DigiMindCatalog() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                  {selectedProduct.categoryName}
-                </span>
-                <span className="text-xs text-slate-400">
-                  Activation: {selectedProduct.activationMethod}
-                </span>
+              <div className="flex items-center gap-3.5 mb-3">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 p-2.5 flex items-center justify-center shrink-0 shadow-lg">
+                  {getProductLogo(selectedProduct.id, "w-10 h-10")}
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                      {selectedProduct.categoryName}
+                    </span>
+                    <span className="text-xs text-slate-400">
+                      {selectedProduct.activationMethod}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {selectedProduct.name}
+                  </h3>
+                </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-1">
-                {selectedProduct.name}
-              </h3>
               <p className="text-xs text-cyan-300 mb-4">{selectedProduct.tagline}</p>
 
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">

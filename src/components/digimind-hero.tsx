@@ -17,10 +17,24 @@ import {
 } from "lucide-react";
 import { generateDirectWhatsAppChatUrl } from "@/lib/whatsapp";
 import { useCurrency } from "@/context/currency-context";
+import { getProductLogo } from "@/components/brand-logos";
 
 export function DigiMindHero() {
   const { formatPrice } = useCurrency();
   const [deliveryTicker, setDeliveryTicker] = useState(0);
+
+  const brandShowcase = [
+    { id: "youtube-premium", name: "YouTube Premium", tag: "Music & Video" },
+    { id: "github-student-pack", name: "GitHub Dev Pack", tag: "Student Suite" },
+    { id: "linkedin-premium", name: "LinkedIn Premium", tag: "90% Off" },
+    { id: "canva-pro", name: "Canva Pro", tag: "Lifetime" },
+    { id: "chatgpt-plus", name: "ChatGPT Plus", tag: "GPT-4o" },
+    { id: "autodesk", name: "AutoDesk 2025", tag: "1-Yr License" },
+    { id: "adobe-creative-cloud", name: "Adobe CC", tag: "All Apps" },
+    { id: "spotify-premium", name: "Spotify Premium", tag: "1-Year" },
+    { id: "jetbrains-pack", name: "JetBrains Suite", tag: "All IDEs" },
+    { id: "coursera-plus", name: "Coursera Plus", tag: "Certificates" },
+  ];
 
   const tickerItems = [
     { text: "LinkedIn Premium 6-Month activated via voucher link", customer: "Client in Colombo", time: "2m ago" },
@@ -142,6 +156,36 @@ export function DigiMindHero() {
               </div>
               <div className="text-sm font-bold text-white">40+ Digital Platforms</div>
               <div className="text-xs text-slate-400 mt-0.5">AI, Dev, Career, Design & Cloud</div>
+            </div>
+          </div>
+
+          {/* OFFICIAL BRAND UPGRADE CLOUD */}
+          <div className="mt-14 pt-8 border-t border-white/10">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="text-xs font-mono uppercase tracking-widest text-slate-300 font-bold">
+                Supported Platforms & Official Brand Upgrades
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5">
+              {brandShowcase.map((brand) => (
+                <a
+                  key={brand.id}
+                  href="#products"
+                  className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl glass-card border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 transition-all hover:scale-105 group shadow-md cursor-pointer"
+                >
+                  <div className="w-6 h-6 flex items-center justify-center shrink-0">
+                    {getProductLogo(brand.id, "w-5 h-5")}
+                  </div>
+                  <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 transition-colors">
+                    {brand.name}
+                  </span>
+                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-white/10 text-cyan-300">
+                    {brand.tag}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
         </div>

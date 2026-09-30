@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ThemeProvider } from "@/context/theme-context";
 import { CurrencyProvider } from "@/context/currency-context";
 import { AnimatedBackground } from "@/components/animated-background";
 import { MouseTracker } from "@/components/mouse-tracker";
@@ -18,35 +19,37 @@ import { WhatsAppWidget } from "@/components/whatsapp-widget";
 
 export default function Home() {
   return (
-    <CurrencyProvider>
-      <div className="relative min-h-screen bg-[#050816] text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
-        {/* Interactive Mouse Tracking Animation & Ambient Glow */}
-        <MouseTracker />
+    <ThemeProvider>
+      <CurrencyProvider>
+        <div className="relative min-h-screen overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
+          {/* Interactive Mouse Tracking Animation & Ambient Glow */}
+          <MouseTracker />
 
-        {/* Ambient Glowing Background */}
-        <AnimatedBackground />
+          {/* Attractive Geometric Cyber & Aurora Background */}
+          <AnimatedBackground />
 
-        {/* Global Navigation Bar with icons & perfect alignment */}
-        <DigiMindNavbar />
+          {/* Global Navigation Bar with icons, single-line alignment & theme switcher */}
+          <DigiMindNavbar />
 
-        {/* Main Sections */}
-        <main className="relative z-10">
-          <DigiMindHero />
-          <DigiMindCatalog />
-          <DigiMindHowItWorks />
-          <DigiMindPayments />
-          <DigiMindEbooks />
-          <DigiMindReviews />
-          <DigiMindFaq />
-          <DigiMindContact />
-        </main>
+          {/* Main Sections */}
+          <main className="relative z-10">
+            <DigiMindHero />
+            <DigiMindCatalog />
+            <DigiMindHowItWorks />
+            <DigiMindPayments />
+            <DigiMindEbooks />
+            <DigiMindReviews />
+            <DigiMindFaq />
+            <DigiMindContact />
+          </main>
 
-        {/* Footer */}
-        <DigiMindFooter />
+          {/* Footer */}
+          <DigiMindFooter />
 
-        {/* Floating WhatsApp Action Widget */}
-        <WhatsAppWidget />
-      </div>
-    </CurrencyProvider>
+          {/* Floating WhatsApp Action Widget */}
+          <WhatsAppWidget />
+        </div>
+      </CurrencyProvider>
+    </ThemeProvider>
   );
 }

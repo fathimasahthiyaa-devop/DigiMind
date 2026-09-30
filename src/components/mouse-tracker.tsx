@@ -94,7 +94,7 @@ export function MouseTracker() {
             : "rgba(34, 211, 238, 0.45)",
           backgroundColor: isHoveringClickable
             ? "rgba(6, 182, 212, 0.12)"
-            : "transparent",
+            : "rgba(6, 182, 212, 0)",
         }}
         transition={{ duration: 0.15, ease: "easeOut" }}
         className="fixed -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-cyan-400/50 pointer-events-none z-50 shadow-[0_0_15px_rgba(6,182,212,0.3)] backdrop-blur-[1px]"
