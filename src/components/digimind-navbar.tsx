@@ -43,13 +43,13 @@ export function DigiMindNavbar() {
   const currencies: Currency[] = ["USD", "LKR", "INR", "EUR"];
 
   const navLinks = [
-    { label: "All Products", href: "#products", icon: ShoppingBag },
-    { label: "How It Works", href: "#how-it-works", icon: Layers },
-    { label: "Payment Methods", href: "#payments", icon: CreditCard },
-    { label: "Free E-books", href: "#ebooks", icon: BookOpen },
-    { label: "Customer Reviews", href: "#reviews", icon: Star },
-    { label: "FAQs", href: "#faqs", icon: HelpCircle },
-    { label: "Contact HQ", href: "#contact", icon: Phone },
+    { label: "All Products", shortLabel: "All Products", href: "#products", icon: ShoppingBag },
+    { label: "How It Works", shortLabel: "How It Works", href: "#how-it-works", icon: Layers },
+    { label: "Payment Methods", shortLabel: "Payments", href: "#payments", icon: CreditCard },
+    { label: "Free E-books", shortLabel: "E-Books", href: "#ebooks", icon: BookOpen },
+    { label: "Customer Reviews", shortLabel: "Reviews", href: "#reviews", icon: Star },
+    { label: "FAQs", shortLabel: "FAQs", href: "#faqs", icon: HelpCircle },
+    { label: "Contact HQ", shortLabel: "Contact", href: "#contact", icon: Phone },
   ];
 
   return (
@@ -57,79 +57,63 @@ export function DigiMindNavbar() {
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
           ? "bg-[#050816]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl py-2.5"
-          : "bg-[#050816]/75 backdrop-blur-lg border-b border-white/[0.05] py-3.5"
+          : "bg-[#050816]/75 backdrop-blur-lg border-b border-white/[0.05] py-3"
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-2 lg:gap-4">
+      <div className="w-full max-w-[1440px] mx-auto px-2.5 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-2 lg:gap-3">
           {/* LOGO */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-            <div className="relative w-9 h-9 rounded-xl border border-cyan-400/60 bg-[#070e28] shadow-[0_0_15px_rgba(6,182,212,0.35)] flex items-center justify-center group-hover:scale-105 group-hover:border-cyan-300 transition-all">
+          <Link href="/" className="flex items-center gap-2 shrink-0 group">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-cyan-400/60 bg-[#070e28] shadow-[0_0_15px_rgba(6,182,212,0.35)] flex items-center justify-center group-hover:scale-105 group-hover:border-cyan-300 transition-all">
               <Zap className="w-4 h-4 text-cyan-400 fill-cyan-400 group-hover:animate-pulse" />
             </div>
 
             <div className="flex items-center">
-              <span className="text-xl font-black tracking-tight text-white font-sans">
+              <span className="text-lg sm:text-xl font-black tracking-tight text-white font-sans">
                 Digi
               </span>
-              <span className="text-xl font-black bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-400 bg-clip-text text-transparent ml-0.5">
+              <span className="text-lg sm:text-xl font-black bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-400 bg-clip-text text-transparent ml-0.5">
                 Mind
               </span>
-              <span className="ml-2 px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/40 shadow-[0_0_8px_rgba(6,182,212,0.2)]">
+              <span className="ml-1.5 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/40 shadow-[0_0_8px_rgba(6,182,212,0.2)]">
                 PRO
               </span>
             </div>
           </Link>
 
-          {/* DESKTOP NAV LINKS WITH PERFECT ICONS & SINGLE-LINE LAYOUT */}
-          <nav className="hidden xl:flex items-center gap-1">
+          {/* DESKTOP NAV LINKS WITH PERFECT ICONS & RESPONSIVE LABELS */}
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-semibold text-slate-300 hover:text-white transition-all rounded-xl hover:bg-white/10 hover:shadow-sm whitespace-nowrap group"
+                  className="flex items-center gap-1 xl:gap-1.5 px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[11px] xl:text-[12px] 2xl:text-[13px] font-semibold text-slate-300 hover:text-white transition-all rounded-xl hover:bg-white/10 hover:shadow-sm whitespace-nowrap group shrink-0"
                 >
                   <Icon className="w-3.5 h-3.5 text-cyan-400/80 group-hover:text-cyan-300 transition-colors shrink-0" />
-                  <span>{link.label}</span>
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* DESKTOP NAV FOR MEDIUM (LAPTOPS 1024px - 1280px): COMPACT WITH ICONS */}
-          <nav className="hidden lg:flex xl:hidden items-center gap-0.5">
-            {navLinks.slice(0, 5).map((link) => {
-              const Icon = link.icon;
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-all rounded-lg hover:bg-white/10 whitespace-nowrap group"
-                >
-                  <Icon className="w-3.5 h-3.5 text-cyan-400/80 group-hover:text-cyan-300 shrink-0" />
-                  <span>{link.label}</span>
+                  <span className="hidden 2xl:inline">{link.label}</span>
+                  <span className="inline 2xl:hidden">{link.shortLabel}</span>
                 </Link>
               );
             })}
           </nav>
 
           {/* RIGHT CONTROLS: THEME SWITCHER, CURRENCY SELECTOR & WHATSAPP BUTTON */}
-          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+          <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 shrink-0">
             {/* Theme Change Option Button */}
             <div className="relative">
               <button
                 onClick={() => setThemeDropdown(!themeDropdown)}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-[#0d1430] hover:bg-[#131d45] border border-white/10 hover:border-cyan-400/40 text-xs font-medium text-slate-200 hover:text-white transition-all cursor-pointer shadow-inner"
+                className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full bg-[#0d1430] hover:bg-[#131d45] border border-white/10 hover:border-cyan-400/40 text-[11px] font-medium text-slate-200 hover:text-white transition-all cursor-pointer shadow-inner shrink-0"
                 title={`Current Theme: ${theme}`}
                 aria-label="Change Theme"
               >
-                {theme === "dark" && <Moon className="w-3.5 h-3.5 text-cyan-400" />}
-                {theme === "light" && <Sun className="w-3.5 h-3.5 text-amber-400" />}
-                {theme === "midnight" && <Sparkles className="w-3.5 h-3.5 text-purple-400" />}
-                <span className="capitalize text-[11px] font-bold">{theme}</span>
-                <ChevronDown className="w-3 h-3 text-slate-400" />
+                {theme === "dark" && <Moon className="w-3 h-3 text-cyan-400" />}
+                {theme === "light" && <Sun className="w-3 h-3 text-amber-400" />}
+                {theme === "midnight" && <Sparkles className="w-3 h-3 text-purple-400" />}
+                <span className="capitalize text-[11px] font-bold hidden md:inline">{theme}</span>
+                <ChevronDown className="w-2.5 h-2.5 text-slate-400" />
               </button>
 
               {themeDropdown && (
@@ -169,10 +153,10 @@ export function DigiMindNavbar() {
             <div className="relative">
               <button
                 onClick={() => setCurrencyDropdown(!currencyDropdown)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0d1430] hover:bg-[#131d45] border border-white/10 hover:border-cyan-400/40 text-xs font-bold text-slate-200 hover:text-white transition-all cursor-pointer shadow-inner"
+                className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full bg-[#0d1430] hover:bg-[#131d45] border border-white/10 hover:border-cyan-400/40 text-[11px] font-bold text-slate-200 hover:text-white transition-all cursor-pointer shadow-inner shrink-0"
               >
                 <span>{currency}</span>
-                <ChevronDown className="w-3 h-3 text-slate-400" />
+                <ChevronDown className="w-2.5 h-2.5 text-slate-400" />
               </button>
 
               {currencyDropdown && (
@@ -198,19 +182,22 @@ export function DigiMindNavbar() {
               )}
             </div>
 
-            {/* Vibrant Green WhatsApp Button */}
+            {/* Vibrant Green WhatsApp Button (Never Cuts Off) */}
             <a
               href={generateDirectWhatsAppChatUrl()}
               target="_blank"
               rel="noreferrer"
-              className="relative group overflow-hidden px-4.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold text-white shadow-[0_0_25px_rgba(0,195,123,0.35)] hover:shadow-[0_0_35px_rgba(0,195,123,0.55)] transition-all cursor-pointer flex items-center gap-2 bg-gradient-to-r from-[#00b06f] via-[#00c37b] to-[#00a86b] hover:brightness-110 active:scale-95 whitespace-nowrap"
+              title="Official WhatsApp: +94 74 260 5036"
+              className="relative group overflow-hidden px-3 sm:px-3.5 2xl:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl text-xs font-bold text-white shadow-[0_0_20px_rgba(0,195,123,0.35)] hover:shadow-[0_0_30px_rgba(0,195,123,0.55)] transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-[#00b06f] via-[#00c37b] to-[#00a86b] hover:brightness-110 active:scale-95 whitespace-nowrap shrink-0"
             >
-              <span className="flex h-2.5 w-2.5 relative">
+              <span className="flex h-2 w-2 relative shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
               </span>
-              <MessageCircle className="w-4 h-4 fill-white text-[#00b06f] shrink-0" />
-              <span className="tracking-tight">WhatsApp: +94 74 260 5036</span>
+              <MessageCircle className="w-3.5 h-3.5 fill-white text-[#00b06f] shrink-0" />
+              <span className="tracking-tight hidden 2xl:inline">WhatsApp: +94 74 260 5036</span>
+              <span className="tracking-tight hidden sm:inline 2xl:hidden">WhatsApp Order</span>
+              <span className="tracking-tight inline sm:hidden">WhatsApp</span>
             </a>
           </div>
 
