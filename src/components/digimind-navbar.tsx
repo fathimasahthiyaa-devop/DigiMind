@@ -3,18 +3,19 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  Sparkles,
   Zap,
   ShoppingBag,
-  Menu,
-  X,
+  Layers,
+  CreditCard,
+  BookOpen,
+  Star,
+  HelpCircle,
   Phone,
   MessageCircle,
-  HelpCircle,
-  BookOpen,
-  CreditCard,
-  CheckCircle2,
+  Menu,
+  X,
   ChevronDown,
+  CheckCircle2,
 } from "lucide-react";
 import { useCurrency, Currency } from "@/context/currency-context";
 import { generateDirectWhatsAppChatUrl } from "@/lib/whatsapp";
@@ -35,96 +36,93 @@ export function DigiMindNavbar() {
 
   const currencies: Currency[] = ["USD", "LKR", "INR", "EUR"];
 
+  const navLinks = [
+    { label: "All Products", href: "#products", icon: ShoppingBag },
+    { label: "How It Works", href: "#how-it-works", icon: Layers },
+    { label: "Payment Methods", href: "#payments", icon: CreditCard },
+    { label: "Free E-books", href: "#ebooks", icon: BookOpen },
+    { label: "Customer Reviews", href: "#reviews", icon: Star },
+    { label: "FAQs", href: "#faqs", icon: HelpCircle },
+    { label: "Contact HQ", href: "#contact", icon: Phone },
+  ];
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#060a1d]/90 backdrop-blur-xl border-b border-white/10 shadow-xl py-3"
-          : "bg-transparent py-5"
+          ? "bg-[#050816]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl py-2.5"
+          : "bg-[#050816]/75 backdrop-blur-lg border-b border-white/[0.05] py-3.5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2 lg:gap-4">
           {/* LOGO */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-400/40 transition-all">
-              <div className="w-full h-full bg-[#050816] rounded-[11px] flex items-center justify-center">
-                <Zap className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
-              </div>
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+            <div className="relative w-9 h-9 rounded-xl border border-cyan-400/60 bg-[#070e28] shadow-[0_0_15px_rgba(6,182,212,0.35)] flex items-center justify-center group-hover:scale-105 group-hover:border-cyan-300 transition-all">
+              <Zap className="w-4 h-4 text-cyan-400 fill-cyan-400 group-hover:animate-pulse" />
             </div>
+
             <div className="flex items-center">
-              <span className="text-xl font-extrabold tracking-tight text-white font-sans">
+              <span className="text-xl font-black tracking-tight text-white font-sans">
                 Digi
               </span>
-              <span className="text-xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent ml-1">
+              <span className="text-xl font-black bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-400 bg-clip-text text-transparent ml-0.5">
                 Mind
               </span>
-              <span className="ml-2 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+              <span className="ml-2 px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/40 shadow-[0_0_8px_rgba(6,182,212,0.2)]">
                 PRO
               </span>
             </div>
           </Link>
 
-          {/* DESKTOP NAV LINKS */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            <Link
-              href="#products"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              All Products
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              How It Works
-            </Link>
-            <Link
-              href="#payments"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              Payment Methods
-            </Link>
-            <Link
-              href="#ebooks"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              Free E-books
-            </Link>
-            <Link
-              href="#reviews"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              Customer Reviews
-            </Link>
-            <Link
-              href="#faqs"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              FAQs
-            </Link>
-            <Link
-              href="#contact"
-              className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              Contact HQ
-            </Link>
+          {/* DESKTOP NAV LINKS WITH PERFECT ICONS & SINGLE-LINE LAYOUT */}
+          <nav className="hidden xl:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-semibold text-slate-300 hover:text-white transition-all rounded-xl hover:bg-white/10 hover:shadow-sm whitespace-nowrap group"
+                >
+                  <Icon className="w-3.5 h-3.5 text-cyan-400/80 group-hover:text-cyan-300 transition-colors shrink-0" />
+                  <span>{link.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* RIGHT ACTIONS: CURRENCY SWITCHER & WHATSAPP CTA */}
-          <div className="hidden sm:flex items-center gap-3">
-            {/* Currency Switcher */}
+          {/* DESKTOP NAV FOR MEDIUM (LAPTOPS 1024px - 1280px): COMPACT WITH ICONS */}
+          <nav className="hidden lg:flex xl:hidden items-center gap-0.5">
+            {navLinks.slice(0, 5).map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-all rounded-lg hover:bg-white/10 whitespace-nowrap group"
+                >
+                  <Icon className="w-3.5 h-3.5 text-cyan-400/80 group-hover:text-cyan-300 shrink-0" />
+                  <span>{link.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* RIGHT CONTROLS: CURRENCY SELECTOR & WHATSAPP BUTTON */}
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+            {/* Currency Pill Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setCurrencyDropdown(!currencyDropdown)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0d1430] hover:bg-[#131d45] border border-white/10 hover:border-cyan-400/40 text-xs font-bold text-slate-200 hover:text-white transition-all cursor-pointer shadow-inner"
               >
                 <span>{currency}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                <ChevronDown className="w-3 h-3 text-slate-400" />
               </button>
 
               {currencyDropdown && (
-                <div className="absolute right-0 mt-2 w-28 glass-dropdown rounded-xl p-1.5 border border-white/10 shadow-2xl z-50">
+                <div className="absolute right-0 mt-2 w-28 glass-dropdown rounded-2xl p-1.5 border border-white/10 shadow-2xl z-50 bg-[#070e28]/95 backdrop-blur-xl">
                   {currencies.map((c) => (
                     <button
                       key={c}
@@ -132,7 +130,7 @@ export function DigiMindNavbar() {
                         setCurrency(c);
                         setCurrencyDropdown(false);
                       }}
-                      className={`w-full text-left px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer flex items-center justify-between ${
+                      className={`w-full text-left px-3 py-1.5 text-xs font-medium rounded-xl transition-colors cursor-pointer flex items-center justify-between ${
                         currency === c
                           ? "bg-cyan-500/20 text-cyan-300 font-bold"
                           : "text-slate-300 hover:bg-white/5"
@@ -146,22 +144,27 @@ export function DigiMindNavbar() {
               )}
             </div>
 
-            {/* Direct WhatsApp CTA */}
+            {/* Vibrant Green WhatsApp Button (matches user design exactly) */}
             <a
               href={generateDirectWhatsAppChatUrl()}
               target="_blank"
               rel="noreferrer"
-              className="relative group overflow-hidden px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/35 transition-all cursor-pointer flex items-center gap-2 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500"
+              className="relative group overflow-hidden px-4.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold text-white shadow-[0_0_25px_rgba(0,195,123,0.35)] hover:shadow-[0_0_35px_rgba(0,195,123,0.55)] transition-all cursor-pointer flex items-center gap-2 bg-gradient-to-r from-[#00b06f] via-[#00c37b] to-[#00a86b] hover:brightness-110 active:scale-95 whitespace-nowrap"
             >
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
-                <span>WhatsApp: +94 74 260 5036</span>
-              </div>
+              {/* White Online Pulse Dot */}
+              <span className="flex h-2.5 w-2.5 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+              </span>
+
+              {/* Chat Bubble Icon */}
+              <MessageCircle className="w-4 h-4 fill-white text-[#00b06f] shrink-0" />
+
+              <span className="tracking-tight">WhatsApp: +94 74 260 5036</span>
             </a>
           </div>
 
-          {/* MOBILE TOGGLE */}
+          {/* MOBILE TOGGLE BUTTONS */}
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => {
@@ -186,66 +189,31 @@ export function DigiMindNavbar() {
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="lg:hidden glass-panel border-b border-white/10 bg-[#060a1d]/98 backdrop-blur-2xl px-5 pt-3 pb-6 space-y-3 mt-2">
-          <Link
-            href="#products"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            All Products & Offers
-          </Link>
-          <Link
-            href="#how-it-works"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            Activation Methods & Warranty
-          </Link>
-          <Link
-            href="#payments"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            Payment Options (Bank, Crypto, UPI)
-          </Link>
-          <Link
-            href="#ebooks"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            Free E-books & Guides
-          </Link>
-          <Link
-            href="#reviews"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            Customer Reviews (Facebook)
-          </Link>
-          <Link
-            href="#faqs"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            Frequently Asked Questions
-          </Link>
-          <Link
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-slate-200 hover:text-cyan-400"
-          >
-            Contact Office HQ
-          </Link>
+        <div className="lg:hidden glass-panel border-b border-white/10 bg-[#060a1d]/98 backdrop-blur-2xl px-5 pt-3 pb-6 space-y-2 mt-2">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2.5 py-2 px-3 text-sm font-semibold text-slate-200 hover:text-cyan-400 hover:bg-white/5 rounded-xl transition-all"
+              >
+                <Icon className="w-4 h-4 text-cyan-400" />
+                <span>{link.label}</span>
+              </Link>
+            );
+          })}
 
           <div className="pt-3 border-t border-white/10">
             <a
               href={generateDirectWhatsAppChatUrl()}
               target="_blank"
               rel="noreferrer"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#00b06f] via-[#00c37b] to-[#00a86b] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25"
             >
-              <MessageCircle className="w-4 h-4 fill-white text-emerald-600" />
-              <span>Order via WhatsApp (+94 74 260 5036)</span>
+              <MessageCircle className="w-4 h-4 fill-white text-[#00b06f]" />
+              <span>WhatsApp: +94 74 260 5036</span>
             </a>
           </div>
         </div>

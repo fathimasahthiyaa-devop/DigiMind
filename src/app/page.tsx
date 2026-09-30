@@ -3,6 +3,7 @@
 import React from "react";
 import { CurrencyProvider } from "@/context/currency-context";
 import { AnimatedBackground } from "@/components/animated-background";
+import { MouseTracker } from "@/components/mouse-tracker";
 import { DigiMindNavbar } from "@/components/digimind-navbar";
 import { DigiMindHero } from "@/components/digimind-hero";
 import { DigiMindCatalog } from "@/components/digimind-catalog";
@@ -19,10 +20,13 @@ export default function Home() {
   return (
     <CurrencyProvider>
       <div className="relative min-h-screen bg-[#050816] text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
-        {/* Futuristic glowing ambient background */}
+        {/* Interactive Mouse Tracking Animation & Ambient Glow */}
+        <MouseTracker />
+
+        {/* Ambient Glowing Background */}
         <AnimatedBackground />
 
-        {/* Global Navigation Bar */}
+        {/* Global Navigation Bar with icons & perfect alignment */}
         <DigiMindNavbar />
 
         {/* Main Sections */}
